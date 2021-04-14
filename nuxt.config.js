@@ -1,7 +1,12 @@
+require('dotenv').config()
 export default {
+  ssr: true,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nuxtvite',
+    title: 'refine-discord-servers',
+    htmlAttrs: {
+      lang: 'ja',
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -26,6 +31,9 @@ export default {
     vue: {
       /* options for vite-plugin-vue2 */
     },
+    optimizeDeps: {
+      include: ['cookie'],
+    },
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -34,15 +42,36 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    // https://go.nuxtjs.dev/auth
+    '@nuxtjs/auth-next',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
+  // Axios module configuration: https://auth.nuxtjs.org/providers/discord
+  auth: {
+    redirect: {
+      login: '/login', // 未ログイン時に認証ルートへアクセスした際のリダイレクトURL
+      logout: '/', // ログアウト時のリダイレクトURL
+      callback: '/callback', // Oauth認証等で必要となる コールバックルート
+      home: '/', // ログイン後のリダイレクトURL
+    },
+    strategies: {
+      discord: {
+        clientId: process.env.OAUTH_CLIENT_ID,
+        clientSecret: process.env.OAUTH_CLIENT_SECRET,
+        grantType: process.env.GRANT_TYPE,
+        scope: ['identify', 'guilds'],
+        redirectUri: process.env.REDIRECT_URI,
+        codeChallengeMethod: '',
+      },
+    },
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en',
+      lang: 'ja',
     },
   },
 

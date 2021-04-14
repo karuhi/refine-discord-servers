@@ -12,6 +12,7 @@
         for <a href="https://vuejs.org/">Vuejs</a>, It was created to make new
         interfaces that have a new trend and are visually beautiful
       </h2>
+      <nuxt-link to="/login">ログイン画面へ</nuxt-link>
       <div class="links">
         <h3 class="h3">Vuesax</h3>
         <a
