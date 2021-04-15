@@ -1,19 +1,38 @@
 <template>
   <div>
-    <h1>ログインしました</h1>
-    <p>Hello, {{ $store.state.auth.user }}さん</p>
-    <!-- <P>Hello, {{ $auth.$state.user.username }}さん</P> -->
-    <button @click="logout">ログアウト</button>
+    <navbar />
+    <main class="page">
+      <h1>ログインしました</h1>
+      <p>Hello, {{ user }}さん</p>
+      <div>guilds{{ guilds }}</div>
+    </main>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   middleware: 'auth',
-  methods: {
-    logout() {
-      this.$auth.logout()
+  computed: {
+    user() {
+      return this.$store.state.auth.user
     },
+    guilds() {
+      return this.$store.state.discordApi.guilds
+    },
+  },
+  data: function () {
+    return {
+      test: '',
+    }
+  },
+  mounted() {
+    this.getGuild()
+  },
+  methods: {
+    ...mapActions({
+      getGuild: 'discordApi/getGuild',
+    }),
   },
 }
 </script>

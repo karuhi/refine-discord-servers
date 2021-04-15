@@ -16,7 +16,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['vuesax/dist/vuesax.css'],
+  css: ['@/static/reseter.min.css', 'vuesax/dist/vuesax.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['@/plugins/vuesax'],
@@ -47,14 +47,16 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: 'https://discord.com/api/v8',
+  },
   // Axios module configuration: https://auth.nuxtjs.org/providers/discord
   auth: {
     redirect: {
       login: '/login', // 未ログイン時に認証ルートへアクセスした際のリダイレクトURL
       logout: '/', // ログアウト時のリダイレクトURL
       callback: '/callback', // Oauth認証等で必要となる コールバックルート
-      home: '/', // ログイン後のリダイレクトURL
+      home: '/dashboard', // ログイン後のリダイレクトURL
     },
     strategies: {
       discord: {
