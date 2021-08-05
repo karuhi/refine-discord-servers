@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="container">
     <navbar />
     <div>
       <header class="content-logos">

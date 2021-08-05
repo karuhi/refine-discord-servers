@@ -1,7 +1,7 @@
 <template>
   <div>
     <navbar />
-    <main class="page">
+    <main class="container">
       <h1>ログイン画面</h1>
       <vs-button gradient v-on:click="discordAuthenticate"> Discord </vs-button>
     </main>

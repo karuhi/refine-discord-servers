@@ -19,7 +19,7 @@ export default {
   css: ['@/static/reseter.min.css', 'vuesax/dist/vuesax.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/vuesax'],
+  plugins: ['@/plugins/vuesax', '@/plugins/lazyload.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
